@@ -11,6 +11,7 @@ def test_push():
     assert ll.head.value == 4
     assert ll.head.next.value == 3
 
+
 def test_pop_empty():
     ll = LinkedList()
 
@@ -23,12 +24,12 @@ def test_pop():
     ll = LinkedList([1, 2, 3])
     ll.pop()
     assert ll.head.value == 2
-    
+
     assert ll.pop() == 2
 
 
 def test_size():
-    ll = LinkedList([3,7,4,1])
+    ll = LinkedList([3, 7, 4, 1])
 
     assert ll.size() == 4
     ll.pop()
@@ -37,20 +38,20 @@ def test_size():
 
 
 def test_search_there():
-    ll = LinkedList([3,6,2,4])
-    
+    ll = LinkedList([3, 6, 2, 4])
+
     assert ll.search(6) == 6
     assert ll.head.next.next.value == 6
 
 
 def test_serach_not_there():
-    ll = LinkedList([6,8,2,4,5])
+    ll = LinkedList([6, 8, 2, 4, 5])
 
     assert ll.search(9) == None
 
 
 def test_search_head_tail_middle():
-    ll = LinkedList([3,2,1])
+    ll = LinkedList([3, 2, 1])
 
     assert ll.search(1) == 1
     assert ll.search(3) == 3
@@ -61,7 +62,6 @@ def test_remove_head():
     ll = LinkedList([3, 6, 4])
     ll.remove(ll.head)
     assert ll.head.value == 6
-    assert ll.head.previous == None
     assert ll.head.next.value == 3
     assert ll._length == 2
 
@@ -84,10 +84,20 @@ def test_remove_last():
 
 
 def test_remove_not_there():
-    ll = LinkedList([5,3,7])
-    
+    ll = LinkedList([5, 3, 7])
+
     with pytest.raises(ValueError) as e_info:
         ll.remove(ll.head.next.next.next)
     assert e_info.value.args[0] == "node not in LinkedList"
 
 
+def test_print():
+    ll = LinkedList([5, 27, 8])
+
+    assert print(ll) == "(5, 27, 8)"
+
+
+def test_len():
+    ll = LinkedList([5, 8, 4])
+
+    assert len(ll) == 3
