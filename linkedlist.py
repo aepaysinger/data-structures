@@ -30,7 +30,7 @@ class LinkedList:
         if self.head:
             while count < self._length:
                 if current.value == val:
-                    return current.value
+                    return current
                 current = current.next
                 count += 1
         return None

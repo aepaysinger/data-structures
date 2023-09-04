@@ -40,7 +40,7 @@ def test_size():
 def test_search_there():
     ll = LinkedList([3, 6, 2, 4])
 
-    assert ll.search(6) == 6
+    assert ll.search(6) == ll.head.next.next
     assert ll.head.next.next.value == 6
 
 
@@ -53,9 +53,9 @@ def test_serach_not_there():
 def test_search_head_tail_middle():
     ll = LinkedList([3, 2, 1])
 
-    assert ll.search(1) == 1
-    assert ll.search(3) == 3
-    assert ll.search(2) == 2
+    assert ll.search(1) == ll.head
+    assert ll.search(3) == ll.head.next.next
+    assert ll.search(2) == ll.head.next
 
 
 def test_remove_head():
