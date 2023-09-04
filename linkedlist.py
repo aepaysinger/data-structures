@@ -25,7 +25,6 @@ class LinkedList:
         return self._length
 
     def search(self, val):
-        # make sure your searching the LinkedList and not the values
         current = self.head
         count = 0
         if self.head:

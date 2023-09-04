@@ -1,4 +1,4 @@
-import pytest
+import io, pytest, sys
 
 from linkedlist import LinkedList, Node
 
@@ -92,9 +92,16 @@ def test_remove_not_there():
 
 
 def test_print():
-    ll = LinkedList([5, 27, 8])
+    ll = LinkedList([2, 6, 4])
 
-    assert print(ll) == "(5, 27, 8)"
+    captureOutput = io.StringIO()
+    sys.stdout = captureOutput
+    print(ll)
+    sys.stdout = sys.__stdout__
+
+    assert (
+        captureOutput.getvalue() == "(4, 6, 2)\n"
+    ), f"Printed: {captureOutput.getvalue()}, instead of (4, 6, 2)"
 
 
 def test_len():
