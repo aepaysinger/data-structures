@@ -1,4 +1,4 @@
-class Stack():
+class Stack:
     def __init__(self, values=None):
         self.storage = []
         self._length = 0
@@ -17,6 +17,6 @@ class Stack():
             return self.storage.pop()
         else:
             raise ValueError("The stack is empty.")
-        
+
     def __len__(self):
         return self._length
