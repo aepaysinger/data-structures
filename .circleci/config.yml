@@ -37,7 +37,7 @@ jobs:
           name: "run tests"
           command: |
             . venv/bin/activate
-            pytest
+            PYTHONPATH=. pytest
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
