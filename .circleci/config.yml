@@ -29,13 +29,11 @@ jobs:
       - checkout
       - run:
           name: "install requirements"
-          command: |
-            python3 -m venv venv
-            . venv/bin/activate
-            pip install -r requirements.txt
-          # command: |
-            . venv/bin/activate
-            pytest
+          command: "pip install -r requirements.txt"
+      - run:
+          name: "run pytest"
+          command: "pytest"
+
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
