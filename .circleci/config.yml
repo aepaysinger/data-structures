@@ -32,7 +32,7 @@ jobs:
           command: "pip install -r requirements.txt"
       - run:
           name: "run pytest"
-          command: "pytest ./"
+          command: "pytest"
 
 
 # Orchestrate jobs using workflows

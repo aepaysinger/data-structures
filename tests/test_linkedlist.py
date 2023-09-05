@@ -1,6 +1,6 @@
 import io, pytest, sys
 
-from linkedlist import LinkedList, Node
+from data_structures.linkedlist import LinkedList, Node
 
 
 def test_push():
