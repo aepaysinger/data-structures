@@ -17,7 +17,7 @@ jobs:
           command: "pip install -r requirements.txt"
       - run:
           name: "run lint"
-          command: "black --check"
+          command: "black ./ --check"
   test:
     # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
     # See: https://circleci.com/docs/configuration-reference/#executor-job
@@ -41,4 +41,4 @@ workflows:
     jobs:
       - test
       - lint
-      
+
