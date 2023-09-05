@@ -3,19 +3,16 @@ from linkedlist import LinkedList
 
 class Stack:
     def __init__(self, values=None):
-        self.ll = LinkedList(values)
-        self._length = 0
+        self.storage = LinkedList(values)
 
     def push(self, val):
-        self.ll.push(val)
-        self._length += 1
+        self.storage.push(val)
 
     def pop(self):
-        if self.ll.head:
-            self._length -= 1
-            return self.ll.pop()
-        else:
-            raise ValueError("The stack is empty.")
+        if self.storage:
+            return self.storage.pop()
+
+        raise ValueError("The stack is empty.")
 
     def __len__(self):
-        return self.ll._length
+        return self.storage._length
