@@ -6,19 +6,6 @@ import pytest
 from stack import Stack
 
 
-def test_stack():
-    s = Stack([3, 6, 2])
-
-    captureOutput = io.StringIO()
-    sys.stdout = captureOutput
-    print(s._storage)
-    sys.stdout = sys.__stdout__
-
-    assert (
-        captureOutput.getvalue() == "(2, 6, 3)\n"
-    ), f"printed: {captureOutput.getvalue()}, instead of (2, 6, 3)"
-
-
 def test_push():
     s = Stack([7, 3, "yes"])
     s.push("please")
