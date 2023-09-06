@@ -1,27 +1,33 @@
-import pytest
+import io, pytest, sys
 
-from stack import Stack
+from stack import Stack, LinkedList
 
 
 def test_stack():
     s = Stack([3, 6, 2])
 
-    assert s.storage._length == 3
-    assert s.storage.head.value == 2
+    captureOutput = io.StringIO()
+    sys.stdout = captureOutput
+    print(s.storage)
+    sys.stdout = sys.__stdout__
+
+    assert (
+        captureOutput.getvalue() == "(2, 6, 3)\n"
+    ), f"printed: {captureOutput.getvalue()}, instead of (2, 6, 3)"
 
 
 def test_push():
     s = Stack([7, 3, "yes"])
     s.push("please")
 
-    assert s.storage._length == 4
+    assert len(s.storage) == 4
 
 
 def test_pop():
     s = Stack([6, 2, 6, 1])
 
     assert s.pop() == 1
-    assert s.storage._length == 3
+    assert len(s.storage) == 3
 
 
 def test_pop_empty():

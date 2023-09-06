@@ -16,3 +16,6 @@ class Stack:
 
     def __len__(self):
         return len(self.storage)
+    
+s = Stack([3, 6, 2])
+print(s.storage)
