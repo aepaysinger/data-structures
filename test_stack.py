@@ -10,14 +10,14 @@ def test_push():
     s = Stack([7, 3, "yes"])
     s.push("please")
 
-    assert len(s._storage) == 4
+    assert len(s) == 4
 
 
 def test_pop():
     s = Stack([6, 2, 6, 1])
 
     assert s.pop() == 1
-    assert len(s._storage) == 3
+    assert len(s) == 3
 
 
 def test_pop_empty():
