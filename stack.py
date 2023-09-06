@@ -11,7 +11,7 @@ class Stack:
     def pop(self):
         try:
             return self.storage.pop()
-        except:
+        except ValueError:
             raise ValueError("The stack is empty.")
 
     def __len__(self):
