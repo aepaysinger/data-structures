@@ -15,4 +15,4 @@ class Stack:
             raise ValueError("The stack is empty.")
 
     def __len__(self):
-        return self.storage._length
+        return len(self.storage)
