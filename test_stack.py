@@ -1,6 +1,9 @@
-import io, pytest, sys
+import io
+import sys
 
-from stack import Stack, LinkedList
+import pytest
+
+from stack import Stack
 
 
 def test_stack():
@@ -8,7 +11,7 @@ def test_stack():
 
     captureOutput = io.StringIO()
     sys.stdout = captureOutput
-    print(s.storage)
+    print(s._storage)
     sys.stdout = sys.__stdout__
 
     assert (
@@ -20,14 +23,14 @@ def test_push():
     s = Stack([7, 3, "yes"])
     s.push("please")
 
-    assert len(s.storage) == 4
+    assert len(s._storage) == 4
 
 
 def test_pop():
     s = Stack([6, 2, 6, 1])
 
     assert s.pop() == 1
-    assert len(s.storage) == 3
+    assert len(s._storage) == 3
 
 
 def test_pop_empty():
