@@ -21,7 +21,7 @@ def test_pop():
 
 
 def test_pop_empty():
-    s = Stack([])
+    s = Stack()
 
     with pytest.raises(ValueError) as exc_info:
         s.pop()
