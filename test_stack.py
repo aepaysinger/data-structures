@@ -18,6 +18,8 @@ def test_pop():
 
     assert s.pop() == 1
     assert len(s) == 3
+    assert s.pop() == 6
+    assert len(s) == 2
 
 
 def test_pop_empty():
