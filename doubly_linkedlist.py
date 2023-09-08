@@ -56,6 +56,7 @@ class Dll:
 
     def remove(self, val):
         current = self.head
+
         while current:
             if current.value == val:
                 if current == self.head:
@@ -64,10 +65,14 @@ class Dll:
                     return
                 current = current.previous
                 current.next = current.next.next
-                current.previous = current.next.previous.previous
+                if current == self.head:
+                    current.next.previous = self.head
+                else:
+                    current.previous.next = current
                 self._length -= 1
                 return
             current = current.next
+
         raise ValueError("Value not in Dll")
 
     def __len__(self):
