@@ -11,6 +11,7 @@ def test_push():
     s.push("please")
 
     assert len(s) == 4
+    assert s.pop() == "please"
 
 
 def test_pop():
