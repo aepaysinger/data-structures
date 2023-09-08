@@ -18,23 +18,23 @@ def test_push():
 
     assert dll.head.value == 3
     assert dll._length == 4
-    assert dll.previous == None
+    assert dll.head.previous == None
     assert dll.head.next.value == 8
 
 
 def test_append():
-    dll = Dll([3])
+    dll = Dll([])
     dll.append(33)
 
-    assert dll.head.value == 3
-    assert dll.head.next.value == 33
-    assert dll._length == 2
+    assert dll.head.value == 33
+    assert dll.head.next == None
+    assert dll._length == 1
 
     dll.append(8)
 
-    assert dll.head.value == 3
-    assert dll.head.next.next.value == 8
-    assert dll._length == 3
+    assert dll.head.value == 33
+    assert dll.head.next.value == 8
+    assert dll._length == 2
 
 
 def test_pop():
@@ -43,6 +43,8 @@ def test_pop():
     assert dll.pop() == 0
     assert dll.head.value == 1
     assert dll._length == 3
+    assert dll.head.next.next.previous.value == 7
+    assert dll.head.previous == None
 
 
 def test_pop_empty():
@@ -86,6 +88,7 @@ def test_remove_middle():
     assert dll.head.next.value == 5
     assert dll.head.next.next.value == 8
     assert dll._length == 3
+    assert dll.head.next.previous.value == 2
 
 
 def test_remove_tail():
