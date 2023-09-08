@@ -20,6 +20,14 @@ def test_push():
     assert dll._length == 4
     assert dll.head.previous == None
     assert dll.head.next.value == 8
+    assert dll.head.next.previous.value == 3
+
+
+def test_push_empty():
+    dll = Dll()
+    dll.push("Head")
+
+    assert dll.head.value == "Head"
 
 
 def test_append():

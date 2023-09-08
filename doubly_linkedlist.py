@@ -10,8 +10,13 @@ class Dll:
                 self._length += 1
 
     def push(self, val):
-        self.head.next = self.head
-        self.head = Node(val, self.head, None)
+        if self.head:
+            self.head.next = self.head
+            self.head.previous = Node(val, self.head, None)
+            self.head = self.head.previous
+        else:
+            self.head = Node(val, self.head, None)
+
         self._length += 1
 
     def append(self, val):
