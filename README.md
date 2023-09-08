@@ -15,3 +15,7 @@
     * shift(): Removes the last value from the tail of the list and returnds it. Raises an exception with an appropriate messafe if there are no values to return.
     * remove(val): Removes the first instance of val found in the list, starting from the head. If val is not present, it will raise and appropriate Python exception.
     * len(): Returns the size of the list.
+## Stack:
+    * push(val): Adds a value to the stack. The parameter is the value to be added to the stack.
+    * pop(): Removes a value from the stack and returns the value. If the stack is empty, attempts to call pop should raise an appropriate Python exception message.
+    * len(): Returns the size of the stack
