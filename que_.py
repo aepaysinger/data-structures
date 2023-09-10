@@ -1,6 +1,8 @@
+from doubly_linkedlist import Dll
+
 class Queue:
     def __init__(self):
-        pass
+        que = 
 
     def enqueue(self, val):
         """adds value to the queue"""
