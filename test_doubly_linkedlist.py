@@ -10,6 +10,7 @@ def test_dll():
     assert dll.head.next.value == 8
     assert dll.head.next.next.previous.value == 8
     assert dll._length == 4
+    assert dll.tail.value == 4
 
 
 def test_push():
@@ -21,6 +22,7 @@ def test_push():
     assert dll.head.previous == None
     assert dll.head.next.value == 8
     assert dll.head.next.previous.value == 3
+    assert dll.tail.value == 5
 
 
 def test_push_empty():
@@ -28,6 +30,7 @@ def test_push_empty():
     dll.push("Head")
 
     assert dll.head.value == "Head"
+    assert dll.tail.value == "Head"
 
 
 def test_append():
@@ -36,6 +39,7 @@ def test_append():
 
     assert dll.head.value == 33
     assert dll.head.next == None
+    assert dll.tail.value == 33
     assert dll._length == 1
 
     dll.append(8)
@@ -43,6 +47,8 @@ def test_append():
     assert dll.head.value == 33
     assert dll.head.next.value == 8
     assert dll._length == 2
+    assert dll.tail.value == 8
+    assert dll.tail.previous.value == 33
 
 
 def test_pop():
@@ -53,6 +59,7 @@ def test_pop():
     assert dll._length == 3
     assert dll.head.next.next.previous.value == 7
     assert dll.head.previous == None
+    assert dll.tail.value == 5
 
 
 def test_pop_empty():
@@ -70,6 +77,8 @@ def test_shift():
     assert dll._length == 2
     assert dll.head.next.value == 8
     assert dll.head.next.previous.value == 1
+    assert dll.tail.value == 8
+    assert dll.tail.next == None
 
 
 def test_shift_empty():
@@ -86,6 +95,7 @@ def test_remove_head():
 
     assert dll.head.value == 7
     assert dll._length == 2
+    assert dll.tail.value == 3
 
 
 def test_remove_middle():
@@ -97,6 +107,7 @@ def test_remove_middle():
     assert dll.head.next.next.value == 8
     assert dll._length == 3
     assert dll.head.next.previous.value == 2
+    assert dll.tail.value == 8
 
 
 def test_remove_tail():
@@ -107,6 +118,7 @@ def test_remove_tail():
     assert dll.head.next.value == 7
     assert dll.head.next.next == None
     assert dll._length == 2
+    assert dll.tail.value == 7
 
 
 def test_remove_not_present():
