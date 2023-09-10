@@ -8,7 +8,7 @@ class Dll:
                 self.head = Node(value, self.head, None)
                 if self.head.next:
                     self.head.next.previous = self.head
-                if self.head.next == None:
+                else:
                     self.tail = self.head
                 self._length += 1
 
