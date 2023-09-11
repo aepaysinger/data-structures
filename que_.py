@@ -15,8 +15,8 @@ class Queue:
             raise ValueError("The queue is empty.")
 
     def peek(self):
-        if len(self._storage) >= 2:
-            return self._storage.head.next.value
+        if self._storage.head:
+            return self._storage.head.value
         return None
 
     def size(self):

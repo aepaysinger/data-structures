@@ -8,11 +8,11 @@ def test_enqueue():
     que.enqueue(5)
 
     assert len(que) == 1
-    assert que.peek() == None
+    assert que.peek() == 5
 
     que.enqueue(6)
 
-    assert que.peek() == 6
+    assert que.peek() == 5
     assert len(que) == 2
 
 
@@ -24,8 +24,9 @@ def test_dequeue():
     assert exc_info.value.args[0] == "The queue is empty."
 
     que.enqueue(7)
+    que.enqueue(8)
 
-    assert len(que) == 1
+    assert len(que) == 2
     assert que.dequeue() == 7
 
 
@@ -36,12 +37,12 @@ def test_peek():
 
     que.enqueue(8)
 
-    assert que.peek() == None
+    assert que.peek() == 8
     assert len(que) == 1
 
     que.enqueue(6)
 
-    assert que.peek() == 6
+    assert que.peek() == 8
     assert len(que) == 2
 
 
