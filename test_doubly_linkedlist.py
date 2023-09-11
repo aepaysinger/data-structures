@@ -89,6 +89,17 @@ def test_pop_empty():
     assert dll.tail == None
 
 
+def test_pop_to_empty():
+    dll = Dll([1, 2, 3])
+
+    dll.pop()
+    dll.pop()
+
+    assert dll.pop() == 1
+    assert dll.head == None
+    assert dll.tail == None
+
+
 def test_shift():
     dll = Dll([4, 8, 1])
 

@@ -34,7 +34,12 @@ class Dll:
 
     def pop(self):
         old_head = self.head
-        if self.head:
+        if self.head and self.head.next == None:
+            self.head = None
+            self.tail = None
+            self._length -= 1
+            return old_head.value
+        elif self.head:
             self.head = self.head.next
             self.head.previous = None
             self._length -= 1
