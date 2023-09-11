@@ -69,6 +69,7 @@ class Dll:
             if current.value == val:
                 if current == self.head:
                     self.head = self.head.next
+                    self.head.previous = None
                     self._length -= 1
                     return
                 current = current.previous
@@ -94,7 +95,3 @@ class Node:
         self.value = value
         self.next = next
         self.previous = previous
-
-
-dll = Dll([2, 3, 4])
-print(dll.__init__)
