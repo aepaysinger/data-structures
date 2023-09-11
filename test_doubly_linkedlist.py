@@ -56,6 +56,13 @@ def test_append():
     assert dll.head.next.previous.value == 33
     assert dll.tail.next == None
 
+    dll.append(4)
+
+    assert dll.head.value == 33
+    assert dll.tail.value == 4
+    assert dll.head.next.value == 8
+    assert dll.tail.previous.value == 8
+
 
 def test_pop():
     dll = Dll([5, 7, 1, 0])
