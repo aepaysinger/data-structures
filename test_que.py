@@ -1,6 +1,6 @@
 import pytest
 
-from que_ import Queue
+from que import Queue
 
 
 def test_enqueue():
