@@ -19,3 +19,9 @@
     * push(val): Adds a value to the stack. The parameter is the value to be added to the stack.
     * pop(): Removes a value from the stack and returns the value. If the stack is empty, attempts to call pop should raise an appropriate Python exception message.
     * len(): Returns the size of the stack
+## Queue:
+    * enqueue(value): Adds value to the queue.
+    * dequeue(): Removes the correct item from the queue and returns its value. If the queue is empty it should raise an error.
+    * peek(): Returns the next value in the queue without dequeueing it. If the queue is empty it returns None.
+    * size(): Returns the size of the queue. Should return 0 if the queue is empty.
+    * len(): Returns the suze of the queue. 

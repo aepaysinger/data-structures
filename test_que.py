@@ -5,7 +5,6 @@ from que_ import Queue
 
 def test_enqueue():
     que = Queue()
-
     que.enqueue(5)
 
     assert len(que) == 1
@@ -50,3 +49,10 @@ def test_size():
     que = Queue([6, 8, 2, 1])
 
     assert que.size() == 4
+
+    que.dequeue()
+    que.dequeue()
+    que.dequeue()
+    que.dequeue()
+
+    assert que.size() == 0
