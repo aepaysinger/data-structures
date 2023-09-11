@@ -23,28 +23,23 @@ class Dll:
         self._length += 1
 
     def append(self, val):
-        current = self.head
-        if current:
-            while current:
-                if current.next == None:
-                    if current == self.head:
-                        self.head.next = Node(val, None, self.head)
-                        self.tail = self.head.next
-                        self._length += 1
-                        return
-                    current.next = Node(val, None, current)
-                    self.tail = current.next
-                    self._length += 1
-                    return
-                current = current.next
+        if self.tail:
+            self.tail.next = Node(val, None, self.tail)
+            self.tail = self.tail.next
+
         else:
-            self.head = Node(val, self.head, None)
-            self.tail = self.head
-            self._length += 1
+            self.tail = Node(val, self.head, None)
+            self.head = self.tail
+        self._length += 1
 
     def pop(self):
         old_head = self.head
-        if self.head:
+        if self.head and self.head.next == None:
+            self.head = None
+            self.tail = None
+            self._length -= 1
+            return old_head.value
+        elif self.head:
             self.head = self.head.next
             self.head.previous = None
             self._length -= 1
@@ -69,6 +64,7 @@ class Dll:
             if current.value == val:
                 if current == self.head:
                     self.head = self.head.next
+                    self.head.previous = None
                     self._length -= 1
                     return
                 current = current.previous
@@ -95,6 +91,3 @@ class Node:
         self.next = next
         self.previous = previous
 
-
-dll = Dll([2, 3, 4])
-print(dll.__init__)

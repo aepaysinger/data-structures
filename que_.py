@@ -2,7 +2,7 @@ from doubly_linkedlist import Dll
 
 class Queue:
     def __init__(self):
-        que = 
+        que = Dll()
 
     def enqueue(self, val):
         """adds value to the queue"""
