@@ -90,4 +90,3 @@ class Node:
         self.value = value
         self.next = next
         self.previous = previous
-
