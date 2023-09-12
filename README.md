@@ -25,3 +25,11 @@
     * peek(): Returns the next value in the queue without dequeueing it. If the queue is empty it returns None.
     * size(): Returns the size of the queue. Should return 0 if the queue is empty.
     * len(): Returns the suze of the queue. 
+## Deque:
+    * append(value): Adds value to the tail of the deque.
+    * appendleft(value): Adds value to the front of the deque.
+    * pop(): Removes a value from the tail of the deque and returns it. Raises an exception if the Dequw is empty.
+    * popleft(): Removes a value from the front of the Deque and returns it. Raises an exception of the Deque is empty.
+    * peek(): Returns the next value that would be returned by pop but leaves the value in the Deque. Returns None if the Deque is empty.
+    * peekleft(): Returns the next value that would be returned by popleft but leaves the value in the Deque. Returns None if the Deque is empty.
+    * size(): Returns the count of items in the Deque. Returns 0 if the Deque is empty.
