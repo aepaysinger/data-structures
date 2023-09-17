@@ -1,7 +1,8 @@
 from binheap import BinaryHeap
 
+
 def test_push():
-    binheap = BinaryHeap()
+    binheap = BinaryHeap("min")
 
     binheap.push(4)
 
@@ -28,12 +29,33 @@ def test_push():
 
 
 def test_heap_up():
-    binheap = BinaryHeap([2, 3, 1, 4])
+    binheap = BinaryHeap("min", [2, 3, 1, 4])
 
     assert binheap.storage == [1, 3, 2, 4]
 
+
 def test_heap_down():
-    # binheap = BinaryHeap([2, 3, 1, 4])
-    binheap = BinaryHeap([2, 3, 1])
+    binheap = BinaryHeap("max", [2, 3, 1])
     binheap.heap_down()
     assert binheap.storage == [3, 2, 1]
+
+
+def test_pop_min():
+    binheap = BinaryHeap("min", [5, 7, 1, 3, 8])
+
+    assert binheap.storage == [1, 3, 5, 7, 8]
+
+    binheap.pop()
+
+    assert binheap.storage == [3, 5, 7, 8]
+    assert binheap.size == 4
+
+
+def test_pop_max():
+    binheap = BinaryHeap("max", [9, 2, 50, 6, 32, 1])
+
+    assert binheap.storage == [50, 32, 9, 2, 6, 1]
+
+    binheap.pop()
+
+    assert binheap.storage == [32, 9, 2, 6, 1]

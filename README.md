@@ -33,3 +33,7 @@
     * peek(): Returns the next value that would be returned by pop but leaves the value in the Deque. Returns None if the Deque is empty.
     * peekleft(): Returns the next value that would be returned by popleft but leaves the value in the Deque. Returns None if the Deque is empty.
     * size(): Returns the count of items in the Deque. Returns 0 if the Deque is empty.
+## Binary Tree:
+    * takes a bin_type: max heap or min heap
+    * push(val): Puts a new value into the heap, while maintaining the heap property.
+    * pop(): Removes the "top" value in the heap, while maintaining the heap property.
