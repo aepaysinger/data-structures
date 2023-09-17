@@ -68,16 +68,12 @@ class BinaryHeap:
             self.heap_down()
 
     def pop(self):
-        self.storage.pop(0)
-        self.size -= 1
-        if self.bin_type == "min":
-            self.heap_up()
+        if self.storage:
+            self.storage.pop(0)
+            self.size -= 1
+            if self.bin_type == "min":
+                self.heap_up()
+            else:
+                self.heap_down()
         else:
-            self.heap_down()
-
-
-# if __name__ == "__main__":
-#     heap = BinaryHeap([2, 3, 1])
-#     # print(heap.size)
-#     # print(heap.heap_up())
-#     print(heap.heap_down())
+            raise ValueError("Empty BinaryHeap, no items to pop.")
