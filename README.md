@@ -37,12 +37,3 @@
     * takes a bin_type: max heap (largest number is at the top of the tree) or min heap(smallest number is at the top of the tree).
     * push(val): Puts a new value into the heap, while maintaining the heap property.
     * pop(): Removes the "top" value in the heap, while maintaining the heap property.
-    * parent_index(index): Returns the index of the parent index to the give index.
-    * left_child_index(index): Returns the left child index of the given index.
-    * right_child_index(index): Returns the right child index of the give index.
-    * has_parent(index): Returns True or False. Checks if the given index has a parent.
-    * has_left_child(index): Returns True or False. Checks if the given index has a left child.
-    * has_right_child(index): Returns True or False. Checks if the given index has a right child.
-    * heap_up(): Is used to organize the storage. Keeps the smalles element at the top of the tree.
-    * heap_down(): Is used to organixe the storage. Keeps the largest element at the top of the tree.
-    * swap(index1, index2): Swaps two elements in storage.
