@@ -46,6 +46,7 @@ class BinaryHeap:
             index
         ]:
             self._swap(self._parent_index(index), index)
+            index = self._parent_index(index)
 
     def _heap_down(self):
         index = self._size - 1
@@ -53,6 +54,7 @@ class BinaryHeap:
             index
         ]:
             self._swap(self._parent_index(index), index)
+            index = self._parent_index(index)
 
     def _swap(self, index1, index2):
         temp = self._storage[index1]
@@ -77,3 +79,13 @@ class BinaryHeap:
                 self._heap_down()
         except IndexError:
             raise IndexError("Empty BinaryHeap, no items to pop.")
+
+
+if __name__ == "__main__":
+    binheap = BinaryHeap("max")
+    binheap.push(4)
+    binheap.push(3)
+    binheap.push(5)
+    print(binheap._storage)
+    binheap.push(8)
+    print(binheap._storage)
