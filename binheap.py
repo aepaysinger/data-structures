@@ -2,13 +2,13 @@ class BinaryHeap:
     def __init__(self, bin_type, values=None):
         self._storage = []
         self._size = 0
-        self.bin_type = bin_type
+        self._bin_type = bin_type
 
         if values:
             for value in values:
                 self._size += 1
                 self._storage.append(value)
-                if bin_type == "max":
+                if self._bin_type == "max":
                     self._heap_down()
                 else:
                     self._heap_up()
@@ -62,7 +62,7 @@ class BinaryHeap:
     def push(self, value):
         self._storage.append(value)
         self._size += 1
-        if self.bin_type == "min":
+        if self._bin_type == "min":
             self._heap_up()
         else:
             self._heap_down()
@@ -71,7 +71,7 @@ class BinaryHeap:
         if self._storage:
             self._storage.pop(0)
             self._size -= 1
-            if self.bin_type == "min":
+            if self._bin_type == "min":
                 self._heap_up()
             else:
                 self._heap_down()
