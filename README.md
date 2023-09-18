@@ -36,4 +36,4 @@
 ## Binary Tree:
     * takes a bin_type: max heap (largest number is at the top of the tree) or min heap(smallest number is at the top of the tree).
     * push(val): Puts a new value into the heap, while maintaining the heap property.
-    * pop(): Removes the "top" value in the heap, while maintaining the heap property.
+    * pop(): Removes and returns the "top" value in the heap, while maintaining the heap property.

@@ -120,6 +120,7 @@ class BinaryHeap:
 
     def pop(self):
         try:
+            old_top = self._storage[0]
             self._storage[0] = self._storage[-1]
         except IndexError:
             raise IndexError("Empty BinaryHeap, no items to pop.")
@@ -129,3 +130,4 @@ class BinaryHeap:
             self._heap_up_pop()
         else:
             self._heap_down_pop()
+        return old_top

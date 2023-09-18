@@ -72,9 +72,7 @@ def test_pop_min():
     binheap = BinaryHeap("min", [5, 7, 1, 3, 8])
 
     assert binheap._storage == [1, 3, 5, 7, 8]
-
-    binheap.pop()
-
+    assert binheap.pop() == 1
     assert binheap._storage == [3, 7, 5, 8]
     assert binheap._size == 4
 
@@ -83,9 +81,7 @@ def test_pop_max():
     binheap = BinaryHeap("max", [9, 2, 50, 6, 32, 1])
 
     assert binheap._storage == [50, 32, 9, 2, 6, 1]
-
-    binheap.pop()
-
+    assert binheap.pop() == 50
     assert binheap._storage == [32, 6, 9, 2, 1]
 
 
