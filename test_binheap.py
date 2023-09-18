@@ -75,7 +75,7 @@ def test_pop_min():
 
     binheap.pop()
 
-    assert binheap._storage == [3, 5, 7, 8]
+    assert binheap._storage == [3, 7, 5, 8]
     assert binheap._size == 4
 
 
@@ -86,7 +86,7 @@ def test_pop_max():
 
     binheap.pop()
 
-    assert binheap._storage == [32, 9, 2, 6, 1]
+    assert binheap._storage == [32, 6, 9, 2, 1]
 
 
 def test_pop_empty():
