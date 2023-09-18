@@ -93,6 +93,6 @@ def test_pop_empty():
     binheap = BinaryHeap("min")
 
     assert binheap._storage == []
-    with pytest.raises(ValueError) as exc_info:
+    with pytest.raises(IndexError) as exc_info:
         binheap.pop()
     assert exc_info.value.args[0] == "Empty BinaryHeap, no items to pop."
