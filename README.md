@@ -37,3 +37,7 @@
     * takes a bin_type: max heap (largest number is at the top of the tree) or min heap(smallest number is at the top of the tree).
     * push(val): Puts a new value into the heap, while maintaining the heap property.
     * pop(): Removes and returns the "top" value in the heap, while maintaining the heap property.
+## Priority Queue:
+    * insert(value): Inserts the value into the queue. Takes an optional argument for that value's priority, set by default to 0.
+    * pop(): Removes the most important item from the queue and returns its value.
+    * peek(): Returns the most important item without removing it from the queue.
