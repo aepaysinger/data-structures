@@ -18,12 +18,12 @@ class PriorityQue:
         if self._storage:
             self._length -= 1
         try:
-            return self._storage.pop()
+            return self._storage.pop()[1]
         except IndexError:
             raise IndexError("No items to pop.")
 
     def peek(self):
         try:
-            return self._storage[-1]
+            return self._storage[-1][1]
         except IndexError:
             raise IndexError("No items to see.")

@@ -38,7 +38,7 @@ def test_pop():
 
     assert priority_q._storage == [(0, 8), (0, "this"), (99, "yes")]
     assert priority_q._length == 3
-    assert priority_q.pop() == (99, "yes")
+    assert priority_q.pop() == "yes"
 
     priority_q.pop()
     priority_q.pop()
@@ -52,7 +52,7 @@ def test_pop():
 def test_peek():
     priority_q = PriorityQue([(0, 3), (0, 6), (2, 100), (7, 9)])
 
-    assert priority_q.peek() == (7, 9)
+    assert priority_q.peek() == 9
     assert priority_q._length == 4
 
     priority_q.pop()
