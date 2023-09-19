@@ -39,6 +39,7 @@ def test_pop():
     assert priority_q._storage == [(0, 8), (0, "this"), (99, "yes")]
     assert priority_q._length == 3
     assert priority_q.pop() == "yes"
+    assert priority_q._storage == [(0, 8), (0, "this")]
 
     priority_q.pop()
     priority_q.pop()
