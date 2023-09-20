@@ -1,9 +1,7 @@
-import bisect
-
 from binheap import BinaryHeap
 
 
-class PriorityQue:
+class PriorityQueue:
     def __init__(self, values=None):
         self._storage = BinaryHeap("max")
         if values:
@@ -20,13 +18,13 @@ class PriorityQue:
         try:
             return self._storage.pop().value
         except IndexError:
-            raise IndexError("No items to pop.")
+            raise ValueError("No items to pop.")
 
     def peek(self):
         try:
             return self._storage._storage[0].value
         except IndexError:
-            raise IndexError("No items to see.")
+            raise ValueError("No items to see.")
 
 
 class Node:

@@ -89,9 +89,9 @@ def test_pop_empty():
     binheap = BinaryHeap("min")
 
     assert binheap._storage == []
-    with pytest.raises(IndexError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         binheap.pop()
-    assert exc_info.value.args[0] == "Empty BinaryHeap, no items to pop."
+    assert exc_info.value.args[0] == "No items to pop."
 
 
 def test_push_a():
@@ -177,3 +177,10 @@ def test_push_c():
     binheap.push(1)
 
     assert binheap._storage == [1, 9, 5, 17, 12, 15, 6]
+
+
+def test_heap_down_pop():
+    binheap = BinaryHeap("max", [21, 19, 20])
+
+    assert binheap.pop() == 21
+    assert binheap._storage == [20, 19]

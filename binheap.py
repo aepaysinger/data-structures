@@ -123,7 +123,7 @@ class BinaryHeap:
             old_top = self._storage[0]
             self._storage[0] = self._storage[-1]
         except IndexError:
-            raise IndexError("Empty BinaryHeap, no items to pop.")
+            raise ValueError("No items to pop.")
         self._storage = self._storage[:-1]
         self._size -= 1
         if self._bin_type == "min":
