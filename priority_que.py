@@ -1,29 +1,43 @@
 import bisect
 
+from binheap import BinaryHeap
+
 
 class PriorityQue:
     def __init__(self, values=None):
-        self._storage = []
-        self._length = 0
+        self._storage = BinaryHeap("max")
         if values:
-            for value in values:
-                bisect.insort_left(self._storage, value, key=lambda pair: pair[0])
-                self._length += 1
+            for priority, value in values:
+                self._storage.push(Node(priority, value)) 
 
+    def __len__(self):
+        return self._storage._size
+    
     def insert(self, value, priority=0):
-        bisect.insort_left(self._storage, (priority, value), key=lambda pair: pair[0])
-        self._length += 1
+        self._storage.push(Node(priority, value))
 
     def pop(self):
-        if self._storage:
-            self._length -= 1
         try:
-            return self._storage.pop()[1]
+            return self._storage.pop().value
         except IndexError:
             raise IndexError("No items to pop.")
-
+                
     def peek(self):
         try:
-            return self._storage[-1][1]
+            return self._storage._storage[0].value
         except IndexError:
             raise IndexError("No items to see.")
+        
+
+class Node:
+    def __init__(self, priority, value): 
+        self.value = value
+        self.priority = priority
+
+    def __gt__(self, other):
+        return self.priority > other.priority
+
+    
+    def __le__(self, other):
+        return self.priority < other.priority
+    

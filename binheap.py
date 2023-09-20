@@ -74,7 +74,7 @@ class BinaryHeap:
                     else:
                         return
                 else:
-                    if self._left_child_value > self._storage[index]:
+                    if self._left_child_value(index) > self._storage[index]:
                         self._swap(self._left_child_index(index), index)
                     else:
                         return
