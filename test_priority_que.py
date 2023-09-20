@@ -24,11 +24,10 @@ def test_insert():
 
     assert priority_q.peek() == 9
 
-    priority_q.insert(10,8)
+    priority_q.insert(10, 8)
 
     assert priority_q.peek() == 10
     assert len(priority_q) == 4
-
 
 
 def test_pop():
@@ -37,11 +36,9 @@ def test_pop():
     priority_q.insert(8)
     priority_q.insert("yes", 99)
 
-
     assert len(priority_q) == 3
     assert priority_q.peek() == "yes"
     assert priority_q.pop() == "yes"
-
 
     priority_q.pop()
     priority_q.pop()
