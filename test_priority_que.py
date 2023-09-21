@@ -64,6 +64,4 @@ def test_peek():
     priority_q.pop()
     priority_q.pop()
 
-    with pytest.raises(ValueError) as exc_info:
-        priority_q.peek()
-    assert exc_info.value.args[0] == "No items to see."
+    assert priority_q.peek() == None

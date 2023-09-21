@@ -9,7 +9,7 @@ class PriorityQueue:
                 self._storage.push(Node(priority, value))
 
     def __len__(self):
-        return self._storage._size
+        return len(self._storage)
 
     def insert(self, value, priority=0):
         self._storage.push(Node(priority, value))
@@ -17,14 +17,11 @@ class PriorityQueue:
     def pop(self):
         try:
             return self._storage.pop().value
-        except IndexError:
+        except ValueError:
             raise ValueError("No items to pop.")
 
     def peek(self):
-        try:
-            return self._storage._storage[0].value
-        except IndexError:
-            raise ValueError("No items to see.")
+        return self._storage.peek().value if self._storage else None
 
 
 class Node:
@@ -34,6 +31,3 @@ class Node:
 
     def __gt__(self, other):
         return self.priority > other.priority
-
-    def __le__(self, other):
-        return self.priority < other.priority
