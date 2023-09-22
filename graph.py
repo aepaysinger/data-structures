@@ -18,8 +18,9 @@ class Graph:
         self._storage[value] = set()
 
     def add_edge(self, value1, value2):
-        """Adds a new edge to the graph connecting the node containing 'value1' and the node containing 'value 2'. 
-        If either value1 or value2 are not already present in the graph, they should be added. If an edge already exists, overwrite it."""
+        """Adds a new edge to the graph connecting the node containing 'value1' and the node containing 'value 2'.
+        If either value1 or value2 are not already present in the graph, they should be added. If an edge already exists, overwrite it.
+        """
         if value1 not in self._storage:
             self._storage[value1] = {(value1, value2)}
         if value2 not in self._storage:
@@ -36,8 +37,7 @@ class Graph:
                 if (nodes, value) in edges:
                     edges.remove((nodes, value))
         else:
-            raise ValueError("Node does not exist")               
-        
+            raise ValueError("Node does not exist")
 
     def del_edge(self, value1, value2):
         """Deletes the edge connecting 'value1' and 'value2' from the graph; raises an error if no such edge exists."""
@@ -49,16 +49,26 @@ class Graph:
 
     def has_node(self, value):
         """True if node containing value 'value' is contained in the graph, False if not."""
-        return  value in self._storage
+        return value in self._storage
 
     def neighbors(self, value):
         """Returns the list of all nodes connected to the node containing "value" by edges; raises an error if value is not in graph."""
-        
+        if value in self._storage:
+            return [edge_value[1] for edge_value in self._storage[value]]
+        else:
+            raise ValueError("Value not in graph.")
 
     def adjacent(self, value1, value2):
-        """Returns True if there is an edge connecting 'value1' and 'value2', False if not; raises an error if either of 
+        """Returns True if there is an edge connecting 'value1' and 'value2', False if not; raises an error if either of
         the supplied values are not in the graph."""
-        pass
+        try:
+            return (value1, value2) in self._storage[value1] or (
+                value2,
+                value1,
+            ) in self._storage[value2]
+        except KeyError:
+            if value1 not in self._storage or value2 not in self._storage:
+                raise ValueError("One of the values are not in the graph")
 
 
 if __name__ == "__main__":
@@ -66,5 +76,6 @@ if __name__ == "__main__":
     graph.add_edge(4, 6)
     graph.add_edge(4, 9)
     graph.add_edge(20, 6)
+    print(graph._storage)
     # assert graph._storage == {4: {(4, 6), (4, 9)}, 6: {(6, 4), (6, 20)}, 9: {(9, 4)}, 20: {(20, 6)}}
-    print(graph.del_edge(4, 6))
+    # print(graph.neighbors(6))
