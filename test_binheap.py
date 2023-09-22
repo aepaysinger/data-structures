@@ -9,7 +9,7 @@ def test_push_min():
     binheap.push(4)
 
     assert binheap._storage == [4]
-    assert binheap._size == 1
+    assert len(binheap) == 1
 
     binheap.push(1)
     binheap.push(3)
@@ -37,7 +37,7 @@ def test_push_max():
     binheap.push(35)
 
     assert binheap._storage == [49, 20, 35]
-    assert binheap._size == 3
+    assert len(binheap) == 3
 
     binheap.push(40)
 
@@ -74,7 +74,7 @@ def test_pop_min():
     assert binheap._storage == [1, 3, 5, 7, 8]
     assert binheap.pop() == 1
     assert binheap._storage == [3, 7, 5, 8]
-    assert binheap._size == 4
+    assert len(binheap) == 4
 
 
 def test_pop_max():
@@ -89,9 +89,9 @@ def test_pop_empty():
     binheap = BinaryHeap("min")
 
     assert binheap._storage == []
-    with pytest.raises(IndexError) as exc_info:
+    with pytest.raises(ValueError) as exc_info:
         binheap.pop()
-    assert exc_info.value.args[0] == "Empty BinaryHeap, no items to pop."
+    assert exc_info.value.args[0] == "No items to pop."
 
 
 def test_push_a():
@@ -177,3 +177,53 @@ def test_push_c():
     binheap.push(1)
 
     assert binheap._storage == [1, 9, 5, 17, 12, 15, 6]
+
+
+def test_heap_down_pop_a():
+    binheap = BinaryHeap("max", [21, 20, 19])
+
+    assert binheap.pop() == 21
+    assert binheap._storage == [20, 19]
+
+
+def test_heap_down_pop_b():
+    binheap = BinaryHeap("max", [21, 19, 20])
+
+    assert binheap.pop() == 21
+    assert binheap._storage == [20, 19]
+
+
+def test_peek():
+    binheap = BinaryHeap("max")
+
+    assert binheap.peek() == None
+
+    binheap.push(5)
+
+    assert binheap.peek() == 5
+
+
+def test_bool_false():
+    binheap = BinaryHeap("min")
+
+    assert bool(binheap) == False
+
+
+def test_bool_true():
+    binheap = BinaryHeap("max", [21, 19, 20])
+
+    assert bool(binheap) == True
+
+
+def test_heap_up_pop_a():
+    binheap = BinaryHeap("min", [1, 20, 18, 30])
+
+    assert binheap.pop() == 1
+    assert binheap._storage == [18, 20, 30]
+
+
+def test_heap_up_pop_b():
+    binheap = BinaryHeap("min", [1, 45, 8])
+
+    assert binheap.pop() == 1
+    assert binheap._storage == [8, 45]
