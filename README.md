@@ -47,3 +47,7 @@
     * has_node(value): Returns True if node containing 'value' is contained in th egraph, False if not.
     * neighbors(value): Returns the list of all nodes connected to the node containing 'value' by edges; raises an error if 'value' is nto in graph.
     * adjacent(value1, value2): Returns True if there is an edge connecting 'value1' and 'value2', False if not; raises an error if either of the supplied values are not in graph.
+## Priority Queue:
+    * insert(value): Inserts the value into the queue. Takes an optional argument for that value's priority, set by default to 0.
+    * pop(): Removes the most important item from the queue and returns its value.
+    * peek(): Returns the most important item without removing it from the queue.

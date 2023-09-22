@@ -1,12 +1,10 @@
 class BinaryHeap:
     def __init__(self, bin_type, values=None):
         self._storage = []
-        self._size = 0
         self._bin_type = bin_type
 
         if values:
             for value in values:
-                self._size += 1
                 self._storage.append(value)
                 if self._bin_type == "max":
                     self._heap_down()
@@ -26,10 +24,10 @@ class BinaryHeap:
         return self._parent_index(index) >= 0
 
     def _has_left_child(self, index):
-        return self._left_child_index(index) < self._size
+        return self._left_child_index(index) < len(self)
 
     def _has_right_child(self, index):
-        return self._right_child_index(index) < self._size
+        return self._right_child_index(index) < len(self)
 
     def _parent_value(self, index):
         return self._storage[self._parent_index(index)]
@@ -41,7 +39,7 @@ class BinaryHeap:
         return self._storage[self._right_child_index(index)]
 
     def _heap_up(self):
-        index = self._size - 1
+        index = len(self) - 1
         while (self._has_parent(index)) and self._parent_value(index) > self._storage[
             index
         ]:
@@ -49,7 +47,7 @@ class BinaryHeap:
             index = self._parent_index(index)
 
     def _heap_down(self):
-        index = self._size - 1
+        index = len(self) - 1
         while (self._has_parent(index)) and self._parent_value(index) < self._storage[
             index
         ]:
@@ -71,10 +69,8 @@ class BinaryHeap:
                         and self._right_child_value(index) > self._storage[index]
                     ):
                         self._swap(self._right_child_index(index), index)
-                    else:
-                        return
                 else:
-                    if self._left_child_value > self._storage[index]:
+                    if self._left_child_value(index) > self._storage[index]:
                         self._swap(self._left_child_index(index), index)
                     else:
                         return
@@ -96,8 +92,6 @@ class BinaryHeap:
                         and self._right_child_value(index) < self._storage[index]
                     ):
                         self._swap(self._right_child_index(index), index)
-                    else:
-                        return
                 else:
                     if self._left_child_value(index) < self._storage[index]:
                         self._swap(self._left_child_index(index), index)
@@ -112,7 +106,6 @@ class BinaryHeap:
 
     def push(self, value):
         self._storage.append(value)
-        self._size += 1
         if self._bin_type == "min":
             self._heap_up()
         else:
@@ -121,13 +114,24 @@ class BinaryHeap:
     def pop(self):
         try:
             old_top = self._storage[0]
-            self._storage[0] = self._storage[-1]
         except IndexError:
-            raise IndexError("Empty BinaryHeap, no items to pop.")
+            raise ValueError("No items to pop.")
+        self._storage[0] = self._storage[-1]
         self._storage = self._storage[:-1]
-        self._size -= 1
         if self._bin_type == "min":
             self._heap_up_pop()
         else:
             self._heap_down_pop()
         return old_top
+
+    def peek(self):
+        try:
+            return self._storage[0]
+        except IndexError:
+            return None
+
+    def __len__(self):
+        return len(self._storage)
+
+    def __bool__(self):
+        return True if self._storage else False
