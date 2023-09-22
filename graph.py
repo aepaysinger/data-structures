@@ -76,6 +76,6 @@ if __name__ == "__main__":
     graph.add_edge(4, 6)
     graph.add_edge(4, 9)
     graph.add_edge(20, 6)
-    print(graph._storage)
+    print(graph.edges())
     # assert graph._storage == {4: {(4, 6), (4, 9)}, 6: {(6, 4), (6, 20)}, 9: {(9, 4)}, 20: {(20, 6)}}
     # print(graph.neighbors(6))
