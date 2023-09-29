@@ -6,20 +6,21 @@ class Graph:
         self._storage = {}
 
     def nodes(self):
-        """Returns a list of all the nodes in the graph/"""
+        """Return a list of all the nodes in the graph."""
         return [node for node in self._storage]
 
     def edges(self):
-        """Returns a list of all the edges in the graph."""
+        """Return a list of all the edges in the graph."""
         return [edges for edges in self._storage.values()]
 
     def add_node(self, value):
-        """Adds a new node with value 'n' to the graph."""
+        """Adds a new node(value) to the graph."""
         self._storage[value] = set()
 
     def add_edge(self, value1, value2):
-        """Adds a new edge to the graph connecting the node containing 'value1' and the node containing 'value 2'.
-        If either value1 or value2 are not already present in the graph, they should be added. If an edge already exists, overwrite it.
+        """
+        Add a new edge to the graph connecting the node containing 'value1' and the node containing 'value2'.
+        If either value1 or value2 are not already present in the graph, they should be added. If an edge already exisits overwrite it.
         """
         if value1 not in self._storage:
             self._storage[value1] = {(value1, value2)}
@@ -30,17 +31,17 @@ class Graph:
         self._storage[value2].add((value2, value1))
 
     def del_node(self, value):
-        """Deletes the node containing 'value' from the graph; raises an error if no such node exists."""
+        """Delete the node containing 'value' from the graph; raise an error if no such node exists."""
         if value in self._storage:
             del self._storage[value]
-            for nodes, edges in self._storage.items():
-                if (nodes, value) in edges:
-                    edges.remove((nodes, value))
+            for node, edges in self._storage.items():
+                if (node, value) in edges:
+                    edges.remove((node, value))
         else:
             raise ValueError("Node does not exist")
 
     def del_edge(self, value1, value2):
-        """Deletes the edge connecting 'value1' and 'value2' from the graph; raises an error if no such edge exists."""
+        "Delete the edge connecting 'value1' and 'value2' from the graph; raise an error if no such edge exsits."
         if (value1, value2) in self._storage[value1]:
             self._storage[value1].remove((value1, value2))
             self._storage[value2].remove((value2, value1))
@@ -48,34 +49,18 @@ class Graph:
             raise ValueError("Edge does not exist.")
 
     def has_node(self, value):
-        """True if node containing value 'value' is contained in the graph, False if not."""
+        """Return if node containing 'value' is contained in the graph."""
         return value in self._storage
 
     def neighbors(self, value):
-        """Returns the list of all nodes connected to the node containing "value" by edges; raises an error if value is not in graph."""
+        """Return a list of all nodes connected to the node containing 'value' by edges; raise an error if 'value' is nto in graph."""
         if value in self._storage:
             return [edge_value[1] for edge_value in self._storage[value]]
         else:
             raise ValueError("Value not in graph.")
 
     def adjacent(self, value1, value2):
-        """Returns True if there is an edge connecting 'value1' and 'value2', False if not; raises an error if either of
-        the supplied values are not in the graph."""
-        try:
-            return (value1, value2) in self._storage[value1] or (
-                value2,
-                value1,
-            ) in self._storage[value2]
-        except KeyError:
-            if value1 not in self._storage or value2 not in self._storage:
-                raise ValueError("One of the values are not in the graph")
-
-
-if __name__ == "__main__":
-    graph = Graph()
-    graph.add_edge(4, 6)
-    graph.add_edge(4, 9)
-    graph.add_edge(20, 6)
-    print(graph.edges())
-    # assert graph._storage == {4: {(4, 6), (4, 9)}, 6: {(6, 4), (6, 20)}, 9: {(9, 4)}, 20: {(20, 6)}}
-    # print(graph.neighbors(6))
+        """Return if there is an edge connecting 'value1' and 'value2'; raise an error if either of the supplied values are not in graph."""
+        if value1 not in self._storage or value2 not in self._storage:
+            raise ValueError("One of the values are not in the graph")
+        return (value1, value2) in self._storage[value1]
