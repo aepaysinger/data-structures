@@ -70,3 +70,9 @@ class Node:
     def __init__(self, value, next):
         self.value = value
         self.next = next
+
+
+if __name__ == "__main__":
+    # print(LinkedList() == LinkedList())
+    print(id(LinkedList()))
+    print(id(LinkedList()))

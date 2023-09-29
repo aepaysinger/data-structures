@@ -37,6 +37,16 @@
     * takes a bin_type: max heap (largest number is at the top of the tree) or min heap(smallest number is at the top of the tree).
     * push(val): Puts a new value into the heap, while maintaining the heap property.
     * pop(): Removes and returns the "top" value in the heap, while maintaining the heap property.
+## Graph:
+    * nodes(): Returns a list of all the nodes in the graph.
+    * edges(): Returns a list of all the edges in the graph.
+    * add_node(value): Adds a new node(value) to the graph.
+    * add_edge(value1, value2): Adds a new edge to the graph connecting the node containing 'value1' and the node containing 'value2'. If either value1 or value2 are not already present in the graph, they should be added. If an edge already exisits overwrite it.
+    * del_node(value): deletes the node containing 'value' from the graph; raises an error if no such node exists.
+    * del_edge(value1, value2): Deletes the edge connecting 'value1' and 'value2' from the graph; raises an error if no such edge exsits.
+    * has_node(value): Returns True if node containing 'value' is contained in th egraph, False if not.
+    * neighbors(value): Returns the list of all nodes connected to the node containing 'value' by edges; raises an error if 'value' is nto in graph.
+    * adjacent(value1, value2): Returns True if there is an edge connecting 'value1' and 'value2', False if not; raises an error if either of the supplied values are not in graph.
 ## Priority Queue:
     * insert(value): Inserts the value into the queue. Takes an optional argument for that value's priority, set by default to 0.
     * pop(): Removes the most important item from the queue and returns its value.
