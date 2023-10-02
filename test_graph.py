@@ -153,3 +153,42 @@ def test_adjacent():
     with pytest.raises(ValueError) as exc_info:
         graph.adjacent(4, 15)
     assert exc_info.value.args[0] == "One of the values are not in the graph"
+
+
+def test_depth_first_traversal():
+    graph = Graph()
+    graph.add_edge(4, 6)
+    graph.add_edge(4, 9)
+    graph.add_edge(4, 12)
+    graph.add_edge(6, 20)
+    graph.add_edge(6, 13)
+    graph.add_edge(13, 7)
+    graph.add_edge(9, 28)
+
+    assert graph.depth_first_traversal(4) == [4, 6, 20, 13, 7, 12, 9, 28]
+
+
+def test_breadth_first_traversall_a():
+    graph = Graph()
+    graph.add_edge(4, 6)
+    graph.add_edge(4, 9)
+    graph.add_edge(4, 12)
+    graph.add_edge(6, 20)
+    graph.add_edge(6, 13)
+    graph.add_edge(13, 7)
+    graph.add_edge(9, 28)
+
+    assert graph.breadth_first_traversal(4) == [4, 9, 12, 6, 28, 13, 20, 7]
+
+
+def test_breadth_first_traversall_b():
+    graph = Graph()
+    graph.add_edge(4, 6)
+    graph.add_edge(4, 9)
+    graph.add_edge(4, 12)
+    graph.add_edge(6, 20)
+    graph.add_edge(6, 13)
+    graph.add_edge(13, 7)
+    graph.add_edge(9, 28)
+
+    assert graph.breadth_first_traversal(9) == [9, 4, 28, 12, 6, 13, 20, 7]

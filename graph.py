@@ -1,4 +1,4 @@
-from linkedlist import LinkedList
+from stack import Stack
 
 
 class Graph:
@@ -68,3 +68,30 @@ class Graph:
         if value1 not in self._storage or value2 not in self._storage:
             raise ValueError("One of the values are not in the graph")
         return value2 in self._storage[value1]
+
+    def depth_first_traversal(self, start_val):
+        path = [start_val]
+        track = Stack()
+        for edge in self._storage[start_val]:
+            track.push(edge)
+        while track:
+            current = track.pop()
+            if current not in path:
+                path.append(current)
+            for edge in self._storage[current]:
+                if edge not in path:
+                    track.push(edge)
+        return path
+
+    def breadth_first_traversal(self, start_val):
+        path = [start_val]
+        need_to_check = [start_val]
+
+        while need_to_check:
+            val = need_to_check.pop(0)
+            for edges in self._storage[val]:
+                if edges not in path:
+                    path.append(edges)
+                    need_to_check.append(edges)
+
+        return path
