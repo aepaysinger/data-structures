@@ -70,6 +70,7 @@ class Graph:
         return value2 in self._storage[value1]
 
     def depth_first_traversal(self, start_val):
+        """Return a list of depth_first_traversal starting at start_val"""
         path = [start_val]
         track = Stack()
         for edge in self._storage[start_val]:
@@ -84,6 +85,7 @@ class Graph:
         return path
 
     def breadth_first_traversal(self, start_val):
+        """Return a list of breadth_first_traversal starting at start_val"""
         path = [start_val]
         need_to_check = [start_val]
 
