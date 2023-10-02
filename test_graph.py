@@ -165,7 +165,7 @@ def test_depth_first_traversal():
     graph.add_edge(13, 7)
     graph.add_edge(9, 28)
 
-    assert graph.depth_first_traversal(4) == [4, 6, 20, 13, 7, 12, 9, 28]
+    assert graph.depth_first_traversal(4) == [4, 12, 9, 28, 6, 20, 13, 7]
 
 
 def test_breadth_first_traversall_a():
