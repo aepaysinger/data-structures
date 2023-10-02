@@ -103,7 +103,6 @@ class Graph:
         return path
 
 
-
 if __name__ == "__main__":
     graph = Graph()
     graph.add_edge(4, 6)
@@ -113,6 +112,5 @@ if __name__ == "__main__":
     graph.add_edge(6, 13)
     graph.add_edge(13, 7)
     graph.add_edge(9, 28)
-    
 
     # print(graph.depth_first_traversal(4))
