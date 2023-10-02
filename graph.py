@@ -72,16 +72,16 @@ class Graph:
     def depth_first_traversal(self, start_val):
         """Return a list of depth_first_traversal starting at start_val"""
         path = [start_val]
-        track = Stack()
+        track = []
         for edge in self._storage[start_val]:
-            track.push(edge)
+            track.append(edge)
         while track:
-            current = track.pop()
+            current = track.pop(-1)
             if current not in path:
                 path.append(current)
             for edge in self._storage[current]:
                 if edge not in path:
-                    track.push(edge)
+                    track.append(edge)
         return path
 
     def breadth_first_traversal(self, start_val):
