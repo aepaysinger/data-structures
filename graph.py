@@ -73,13 +73,10 @@ class Graph:
         """Return a list of depth_first_traversal starting at start_val"""
         path = [start_val]
         track = []
-        holding = []
+
         for edge in self._storage[start_val]:
-            holding.append(edge)
-        holding = sorted(holding)
-        for item in holding:
-            track.append(item)
-        holding = []
+            track.append(edge)
+        print(track)
         while track:
             current = track.pop(-1)
             path.append(current)
@@ -101,16 +98,3 @@ class Graph:
                     need_to_check.append(edges)
 
         return path
-
-
-if __name__ == "__main__":
-    graph = Graph()
-    graph.add_edge(4, 6)
-    graph.add_edge(4, 9)
-    graph.add_edge(4, 12)
-    graph.add_edge(6, 20)
-    graph.add_edge(6, 13)
-    graph.add_edge(13, 7)
-    graph.add_edge(9, 28)
-
-    # print(graph.depth_first_traversal(4))
