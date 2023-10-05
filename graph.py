@@ -1,6 +1,3 @@
-from stack import Stack
-
-
 class Graph:
     def __init__(self):
         self._storage = {}
@@ -76,7 +73,6 @@ class Graph:
 
         for edge in self._storage[start_val]:
             track.append(edge)
-        print(track)
         while track:
             current = track.pop(-1)
             path.append(current)
