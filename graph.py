@@ -106,8 +106,6 @@ class Graph:
                 for p in new_paths:
                     paths.append(p)
         return paths
-   
-      
 
 
 if __name__ == "__main__":

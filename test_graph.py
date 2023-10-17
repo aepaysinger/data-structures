@@ -203,4 +203,3 @@ def test_find_paths():
     graph.add_edge("C", "D")
     assert len(graph._find_all_paths("A", "D")) == 2
     assert len(graph._find_all_paths("C", "E")) == 2
-
