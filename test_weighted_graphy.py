@@ -266,3 +266,16 @@ def test_shortest_path():
     graph.add_edge("D", "E", 6)
 
     assert graph._find_shortest_path("A", "D") == ["A", "E", "D"]
+
+
+def test_dijkstra_algorithm():
+    graph = WeightedGraph()
+    graph.add_edge("A", "B", 4)
+    graph.add_edge("A", "C", 2)
+    graph.add_edge("C", "B", 1)
+    graph.add_edge("B", "E", 3)
+    graph.add_edge("B", "D", 2)
+    graph.add_edge("E", "D", 1)
+
+    assert graph.dijkstra_algorithm("A") == ["A", "C"]
+    assert graph.dijkstra_algorithm("D") == ["D", "E"]
