@@ -279,3 +279,15 @@ def test_dijkstra_algorithm():
 
     assert graph.dijkstra_algorithm("A") == ["A", "C"]
     assert graph.dijkstra_algorithm("D") == ["D", "E"]
+
+
+def test_bellman_ford_algorith():
+    graph = WeightedGraph()
+    graph.add_edge("A", "B", 4)
+    graph.add_edge("A", "C", 2)
+    graph.add_edge("C", "B", 1)
+    graph.add_edge("B", "E", 3)
+    graph.add_edge("B", "D", 2)
+    graph.add_edge("E", "D", 1)
+    
+    assert graph.bellmanford_algorithm("A") == {"A": 0, "B": 3, "C": 2, "D": 5, "E": 6}
