@@ -168,6 +168,28 @@ class WeightedGraph:
             shortest_paths[node] = [distance[node], path]
         del shortest_paths[start]
         return shortest_paths[min(shortest_paths, key=lambda node: distance[node])][1]
+    
+
+    def bellmanford_algorithm(self, start):
+        distance = {}
+        predecessor = {}
+        for node in self._storage:
+            distance[node] = float("inf")
+            predecessor[node] = None 
+        distance[start] = 0
+        for _ in range(len(self._storage) - 1):
+            for node, edges in self._storage.items():
+                for (edge, weight) in edges:
+                    if distance[node] > distance[edge]:
+                        distance[node] = distance[edge] + weight
+                        predecessor[node] = edge
+        for node, edges in self._storage.items():
+                for (edge, weight) in edges:
+                    if distance[node] > distance[edge]:
+                        return "negative"
+        return distance        
+
+        
 
 
 if __name__ == "__main__":
@@ -178,4 +200,5 @@ if __name__ == "__main__":
     graph.add_edge("B", "E", 3)
     graph.add_edge("B", "D", 2)
     graph.add_edge("E", "D", 1)
-    print(graph.dijkstra_algorithm("A"))
+    print(graph._storage)
+    print(graph.bellmanford_algorithm("A"))
