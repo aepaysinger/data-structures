@@ -168,37 +168,31 @@ class WeightedGraph:
             shortest_paths[node] = [distance[node], path]
         del shortest_paths[start]
         return shortest_paths[min(shortest_paths, key=lambda node: distance[node])][1]
-    
 
     def bellmanford_algorithm(self, start):
         distance = {}
         predecessor = {}
-        for node in self._storage:
-            distance[node] = float("inf")
-            predecessor[node] = None 
+        for node_a, node_b in self.edges():
+            if node_a not in distance:
+                distance[node_a] = float("inf")
+                predecessor[node_a] = None
+            if node_b not in distance:
+                distance[node_b] = float("inf")
+                predecessor[node_b] = None
         distance[start] = 0
         for _ in range(len(self._storage) - 1):
             for node, edges in self._storage.items():
-                for (edge, weight) in edges:
-                    if distance[node] > distance[edge]:
-                        distance[node] = distance[edge] + weight
-                        predecessor[node] = edge
+                for edge, weight in edges:
+                    if distance[edge] > distance[node]:
+                        distance[edge] = distance[node] + weight
+                        predecessor[edge] = node
         for node, edges in self._storage.items():
-                for (edge, weight) in edges:
-                    if distance[node] > distance[edge]:
-                        return "negative"
-        return distance        
+            for edge, weight in edges:
+                if distance[edge] > distance[node] + weight:
+                    return "negative"
+        return distance
 
-        
-
-
-if __name__ == "__main__":
-    graph = WeightedGraph()
-    graph.add_edge("A", "B", 4)
-    graph.add_edge("A", "C", 2)
-    graph.add_edge("C", "B", 1)
-    graph.add_edge("B", "E", 3)
-    graph.add_edge("B", "D", 2)
-    graph.add_edge("E", "D", 1)
-    print(graph._storage)
-    print(graph.bellmanford_algorithm("A"))
+    def _add_edge_single(self, value1, value2, weight):
+        if value1 not in self._storage:
+            self._storage[value1] = {(value2, weight)}
+        self._storage[value1].add((value2, weight))
