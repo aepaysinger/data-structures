@@ -5,16 +5,17 @@ class BinarySearchTree:
 
     def insert(self, value):
         if not self.contains(value):
-            self.size += 1  
-        if (self.root):
+            self.size += 1
+        if self.root:
             self.root._insert(value)
         else:
             self.root = Node(value)
-   
+
     def contains(self, value):
         if self.root:
             return self.root.find(value)
         return False
+
 
 class Node:
     def __init__(self, value):
@@ -35,7 +36,7 @@ class Node:
                 self.right_child._insert(value)
             else:
                 self.right_child = Node(value)
-        
+
     def find(self, value):
         if self.value == value:
             return True
