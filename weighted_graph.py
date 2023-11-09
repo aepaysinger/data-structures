@@ -136,3 +136,63 @@ class WeightedGraph:
             paths_with_weight.append((total_weight, path))
 
         return min(paths_with_weight)[1]
+
+    def dijkstra_algorithm(self, start):
+        unvisited_nodes = set()
+        distance = {}
+        for node in self._storage:
+            unvisited_nodes.add(node)
+            distance[node] = float("inf")
+
+        distance[start] = 0
+        previous_node = {node: None for node in self._storage}
+
+        while unvisited_nodes:
+            current_node = min(unvisited_nodes, key=lambda node: distance[node])
+            unvisited_nodes.remove(current_node)
+
+            for edge, weight in self._storage[current_node]:
+                if edge in unvisited_nodes:
+                    new_distance = distance[current_node] + weight
+                    if new_distance < distance[edge]:
+                        distance[edge] = new_distance
+                        previous_node[edge] = current_node
+
+        shortest_paths = {}
+        for node in self._storage:
+            path = []
+            current = node
+            while current is not None:
+                path.insert(0, current)
+                current = previous_node[current]
+            shortest_paths[node] = [distance[node], path]
+        del shortest_paths[start]
+        return shortest_paths[min(shortest_paths, key=lambda node: distance[node])][1]
+
+    def bellmanford_algorithm(self, start):
+        distance = {}
+        predecessor = {}
+        for node_a, node_b in self.edges():
+            if node_a not in distance:
+                distance[node_a] = float("inf")
+                predecessor[node_a] = None
+            if node_b not in distance:
+                distance[node_b] = float("inf")
+                predecessor[node_b] = None
+        distance[start] = 0
+        for _ in range(len(self._storage) - 1):
+            for node, edges in self._storage.items():
+                for edge, weight in edges:
+                    if distance[edge] > distance[node]:
+                        distance[edge] = distance[node] + weight
+                        predecessor[edge] = node
+        for node, edges in self._storage.items():
+            for edge, weight in edges:
+                if distance[edge] > distance[node] + weight:
+                    return "negative"
+        return distance
+
+    def _add_edge_single(self, value1, value2, weight):
+        if value1 not in self._storage:
+            self._storage[value1] = {(value2, weight)}
+        self._storage[value1].add((value2, weight))

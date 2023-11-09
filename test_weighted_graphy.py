@@ -266,3 +266,56 @@ def test_shortest_path():
     graph.add_edge("D", "E", 6)
 
     assert graph._find_shortest_path("A", "D") == ["A", "E", "D"]
+
+
+def test_dijkstra_algorithm():
+    graph = WeightedGraph()
+    graph.add_edge("A", "B", 4)
+    graph.add_edge("A", "C", 2)
+    graph.add_edge("C", "B", 1)
+    graph.add_edge("B", "E", 3)
+    graph.add_edge("B", "D", 2)
+    graph.add_edge("E", "D", 1)
+
+    assert graph.dijkstra_algorithm("A") == ["A", "C"]
+    assert graph.dijkstra_algorithm("D") == ["D", "E"]
+
+
+def test_bellman_ford_algorithm():
+    graph = WeightedGraph()
+    graph._add_edge_single("A", "B", 4)
+    graph._add_edge_single("A", "C", 2)
+    graph._add_edge_single("C", "B", 1)
+    graph._add_edge_single("B", "E", 3)
+    graph._add_edge_single("B", "D", 2)
+    graph._add_edge_single("E", "D", 1)
+
+    assert graph.bellmanford_algorithm("A") == {"A": 0, "B": 3, "C": 2, "D": 5, "E": 6}
+
+
+def test_bellmanford_algorithm_negative():
+    graph = WeightedGraph()
+    graph._add_edge_single("A", "B", 5)
+    graph._add_edge_single("A", "C", 4)
+    graph._add_edge_single("B", "D", 3)
+    graph._add_edge_single("C", "A", -6)
+    graph._add_edge_single("D", "C", 2)
+
+    assert graph.bellmanford_algorithm("A") == "negative"
+
+
+def test_add_edge_single():
+    graph = WeightedGraph()
+    graph._add_edge_single("A", "B", 4)
+    graph._add_edge_single("A", "C", 2)
+    graph._add_edge_single("C", "B", 1)
+    graph._add_edge_single("B", "E", 3)
+    graph._add_edge_single("B", "D", 2)
+    graph._add_edge_single("E", "D", 1)
+
+    assert graph._storage == {
+        "A": {("B", 4), ("C", 2)},
+        "C": {("B", 1)},
+        "B": {("E", 3), ("D", 2)},
+        "E": {("D", 1)},
+    }
