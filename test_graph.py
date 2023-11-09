@@ -192,3 +192,14 @@ def test_breadth_first_traversall_b():
     graph.add_edge(9, 28)
 
     assert graph.breadth_first_traversal(9) == [9, 4, 28, 12, 6, 13, 20, 7]
+
+
+def test_find_paths():
+    graph = Graph()
+    graph.add_edge("A", "B")
+    graph.add_edge("A", "E")
+    graph.add_edge("B", "C")
+    graph.add_edge("B", "D")
+    graph.add_edge("C", "D")
+    assert len(graph._find_all_paths("A", "D")) == 2
+    assert len(graph._find_all_paths("C", "E")) == 2
