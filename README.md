@@ -53,3 +53,6 @@
     * insert(value): Inserts the value into the queue. Takes an optional argument for that value's priority, set by default to 0.
     * pop(): Removes the most important item from the queue and returns its value.
     * peek(): Returns the most important item without removing it from the queue.
+## Binary Search Tree:
+    * insert(value): Adds a new node containg the value to the tree.
+    * contains(value): Returns if the node containg the value is in the tree.
